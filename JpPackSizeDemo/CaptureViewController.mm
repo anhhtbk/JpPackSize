@@ -7,6 +7,7 @@
 //
 
 #import "CaptureViewController.h"
+#import "PhotoViewController.h"
 #import "opencv2/opencv.hpp"
 #import <opencv2/highgui/cap_ios.h>
 
@@ -15,6 +16,7 @@
 @property int widthScreen;
 @property int heightScreen;
 @property (strong, nonatomic) CvPhotoCamera *camera;
+@property BOOL isCaptured;
 
 @end
 
@@ -44,19 +46,49 @@
     [self.view addSubview:_captureButton];
     
     [_camera start];
-    [self.view addSubview:_imageView];
-    [_captureButton setEnabled:YES];
     
+    _isCaptured = NO;
 }
 
 -(void)captureButtonClick{
-    [_camera takePicture];
+    if (!_isCaptured) {
+        [_camera takePicture];
+    }else{
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Done!"
+                                      message:@"Do you want go to next step?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"Yes!"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        PhotoViewController *photoView = [PhotoViewController new];
+                                        photoView.image = _imageView.image;
+                                        [self.navigationController pushViewController:photoView animated:YES];
+                                    }];
+        UIAlertAction* noButton = [UIAlertAction
+                                   actionWithTitle:@"No, capture again."
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       _isCaptured = NO;
+                                       [_camera start];
+                                   }];
+        
+        [alert addAction:yesButton];
+        [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
 }
 
 - (void) photoCamera:(CvPhotoCamera *) photoCamera capturedImage:(UIImage *) image{
     [_camera stop];
     [_imageView setImage:image];
-    [_captureButton setEnabled:NO];
+    _isCaptured = YES;
 }
 
 
@@ -64,6 +96,20 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [_camera start];
+    _isCaptured = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [_camera stop];
+}
+
+- (void)dealloc
+{
+    _camera.delegate = nil;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

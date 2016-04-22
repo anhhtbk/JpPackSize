@@ -10,4 +10,9 @@
 
 @interface PhotoViewController : UIViewController
 
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIButton *saveButton;
+@property (strong, nonatomic) NSNumber *sum;
+
 @end
