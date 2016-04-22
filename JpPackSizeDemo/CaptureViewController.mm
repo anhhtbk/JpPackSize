@@ -11,6 +11,8 @@
 #import "opencv2/opencv.hpp"
 #import <opencv2/highgui/cap_ios.h>
 
+using namespace cv;
+
 @interface CaptureViewController () <CvPhotoCameraDelegate>
 
 @property int widthScreen;
@@ -96,6 +98,12 @@
     
 }
 
+//-(void)processImage:(cv::Mat &)image{
+//    CGPoint startPoint = CGPointMake(_widthScreen/2, _heightScreen/2);
+//    
+//    cv::line(image, cv::Point(startPoint.x, startPoint.y), cv::Point(startPoint.x, startPoint.y+200), Scalar( 255, 0, 0 ), 4, 8, 0);
+//}
+
 -(void)viewWillAppear:(BOOL)animated{
     [_camera start];
     _isCaptured = NO;
@@ -116,5 +124,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)drawRect:(CGRect)rect{
+//    line(Mat, Point, Point, Scalar color)
+}
 @end

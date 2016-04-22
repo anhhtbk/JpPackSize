@@ -27,7 +27,7 @@
     [_imageView setImage:_image];
     [self.view addSubview:_imageView];
     
-    _saveButton = [[UIButton alloc] initWithFrame:CGRectMake((_widthScreen-200)/2, _heightScreen-50, 200, 50)];
+    _saveButton = [[UIButton alloc] initWithFrame:CGRectMake((_widthScreen-200)/2, _heightScreen-47, 200, 45)];
     
     [_saveButton setContentMode:UIViewContentModeScaleAspectFit];
     [_saveButton addTarget:self action:@selector(saveButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -39,11 +39,13 @@
     
     _sum = [NSNumber numberWithInteger:100];
     
-    UILabel *labelRight = [[UILabel alloc] initWithFrame:CGRectMake(_widthScreen/2,0,_widthScreen/2,64)] ;
+    UILabel *labelRight = [[UILabel alloc] initWithFrame:CGRectMake(0,0,_widthScreen,64)] ;
     labelRight.backgroundColor = [UIColor clearColor];
     labelRight.font = [UIFont boldSystemFontOfSize:40];
     labelRight.adjustsFontSizeToFitWidth = NO;
+    
     labelRight.textAlignment = NSTextAlignmentRight;
+    
     labelRight.textColor = [UIColor blackColor];
     labelRight.text = [NSString stringWithFormat:@"%@ cm", _sum];
     labelRight.highlightedTextColor = [UIColor blackColor];
