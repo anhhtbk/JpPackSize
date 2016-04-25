@@ -11,10 +11,15 @@
 @interface CustomLine : UIView
 
 @property CGPoint startPoint;
-@property CGPoint endPoint;
+@property CGPoint endPoint1;
+@property CGPoint endPoint2;
+@property CGPoint endPoint3;
+@property float angle;
 @property float width;
-@property UIColor *color;
+@property UIColor *color1;
+@property UIColor *color2;
+@property UIColor *color3;
 
--(id)initWithStartPoint:(CGPoint) startPoint withEndPoint:(CGPoint) endPoint;
+-(id)initWithStartPoint:(CGPoint)startPoint withAngle:(float)angle;
 
 @end

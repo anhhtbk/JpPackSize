@@ -10,6 +10,7 @@
 #import "PhotoViewController.h"
 #import "opencv2/opencv.hpp"
 #import <opencv2/highgui/cap_ios.h>
+#import "CustomLine.h"
 
 using namespace cv;
 
@@ -41,6 +42,9 @@ using namespace cv;
     _camera.defaultAVCaptureSessionPreset = AVCaptureSessionPresetPhoto;
     _camera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     
+    NSLog(@"%d,%d", _camera.imageWidth, _camera.imageHeight);
+    
+    
     _captureButton = [[UIButton alloc] initWithFrame:CGRectMake((_widthScreen-50)/2, _heightScreen-50, 50, 50)];
     [_captureButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     [_captureButton setContentMode:UIViewContentModeScaleAspectFit];
@@ -50,30 +54,30 @@ using namespace cv;
     [_camera start];
     
     _isCaptured = NO;
+    
+    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
+    [self.view addSubview:line];
 }
 
 -(void)captureButtonClick{
     if (!_isCaptured) {
         [_camera takePicture];
     }else{
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Done!"
-                                      message:@"Do you want go to next step?"
-                                      preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * alert=   [UIAlertController alertControllerWithTitle:@"Done!"
+                                                                         message:@"Do you want go to next step?"
+                                                                  preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* yesButton = [UIAlertAction
-                                    actionWithTitle:@"Yes!"
-                                    style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action)
+        UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"Yes!"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
                                     {
                                         PhotoViewController *photoView = [PhotoViewController new];
                                         photoView.image = _imageView.image;
                                         [self.navigationController pushViewController:photoView animated:YES];
                                     }];
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"No, capture again."
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action)
+        UIAlertAction* noButton = [UIAlertAction actionWithTitle:@"No, capture again."
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action)
                                    {
                                        _isCaptured = NO;
                                        [_camera start];
@@ -98,12 +102,6 @@ using namespace cv;
     
 }
 
-//-(void)processImage:(cv::Mat &)image{
-//    CGPoint startPoint = CGPointMake(_widthScreen/2, _heightScreen/2);
-//    
-//    cv::line(image, cv::Point(startPoint.x, startPoint.y), cv::Point(startPoint.x, startPoint.y+200), Scalar( 255, 0, 0 ), 4, 8, 0);
-//}
-
 -(void)viewWillAppear:(BOOL)animated{
     [_camera start];
     _isCaptured = NO;
@@ -124,7 +122,4 @@ using namespace cv;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)drawRect:(CGRect)rect{
-//    line(Mat, Point, Point, Scalar color)
-}
 @end

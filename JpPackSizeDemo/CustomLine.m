@@ -8,60 +8,104 @@
 
 #import "CustomLine.h"
 
+@interface CustomLine()
+{
+    float minX;
+    float maxX;
+    float maxY;
+}
+@end
+
 @implementation CustomLine
 
--(id)initWithStartPoint:(CGPoint) startPoint withEndPoint:(CGPoint) endPoint{
+-(id)initWithStartPoint:(CGPoint)startPoint withAngle:(float)angle{
     CGRect cgrect = [[UIScreen mainScreen] bounds];
-    self = [super initWithFrame:CGRectMake(0, 0, cgrect.size.width, cgrect.size.height-200)];
+    self = [super initWithFrame:CGRectMake(0, 0, cgrect.size.width, cgrect.size.height-50-64)];
+    minX = 10;
+    maxX = cgrect.size.width - 10;
+    maxY = cgrect.size.height - 134;
+    
+    _angle = (angle-90)*M_PI_2/90;
     _startPoint = startPoint;
-    _endPoint = endPoint;
+    
+    _endPoint1 = CGPointMake(_startPoint.x, _startPoint.y + 100);
+    _endPoint2 = CGPointMake(_startPoint.x - 100, _startPoint.y - 100*tan(angle));
+    _endPoint3 = CGPointMake(_startPoint.x + 100, _startPoint.y - 100*tan(angle));
+    
     self.backgroundColor = [UIColor clearColor];
-    _color = [UIColor redColor];
+    _color1 = [UIColor redColor];
+    _color2 = [UIColor greenColor];
+    _color3 = [UIColor blueColor];
     
-    UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(handleSingleTap:)];
-    [self addGestureRecognizer:singleFingerTap];
-    
-    
+    _width = 5;
     return self;
 }
 
-//The event handling method
-- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
-    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
-    if ([self distanceStartPoint:_endPoint endPoint:location] <= 20) {
-        _endPoint.y += 20;
+-(double)distanceStartPoint:(CGPoint)p1 endPoint:(CGPoint)p2{
+    return hypotf(p1.x - p2.x, p1.y - p2.y);
+}
+
+-(void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGContextRef context1 = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context1, _width); //set width
+    
+    CGContextSetStrokeColorWithColor(context1, _color1.CGColor);
+    CGContextMoveToPoint(context1, _startPoint.x, _startPoint.y); //start at this point
+    CGContextAddLineToPoint(context1, _endPoint1.x, _endPoint1.y); //draw to this point
+    // and now draw the Path!
+    CGContextStrokePath(context1);
+    
+    CGContextRef context2 = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context2, _width); //set width
+    
+    CGContextSetStrokeColorWithColor(context2, _color2.CGColor);
+    CGContextMoveToPoint(context2, _startPoint.x, _startPoint.y); //start at this point
+    CGContextAddLineToPoint(context2, _endPoint2.x, _endPoint2.y); //draw to this point
+    // and now draw the Path!
+    CGContextStrokePath(context2);
+    
+    CGContextRef context3 = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context3, _width); //set width
+    
+    CGContextSetStrokeColorWithColor(context3, _color3.CGColor);
+    CGContextMoveToPoint(context3, _startPoint.x, _startPoint.y); //start at this point
+    CGContextAddLineToPoint(context3, _endPoint3.x, _endPoint3.y); //draw to this point
+    // and now draw the Path!
+    CGContextStrokePath(context3);
+}
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *aTouch = [touches anyObject];
+    CGPoint location = [aTouch locationInView:self];
+    CGPoint previousLocation = [aTouch previousLocationInView:self];
+    if ([self distanceStartPoint:_endPoint1 endPoint:previousLocation] <= 20) {
+        if (location.y <= _startPoint.y + 30 || location.y >= maxY) {
+            return;
+        }
+        _endPoint1 = CGPointMake(_endPoint1.x, _endPoint1.y + (location.y - previousLocation.y));
+        [self setNeedsDisplay];
+    }
+    
+    if ([self distanceStartPoint:_endPoint2 endPoint:previousLocation] <= 20) {
+        if (location.y >= _startPoint.y - 50 || location.x <= minX) {
+            return;
+        }
+        double deltaX = location.x - previousLocation.x;
+        _endPoint2 = CGPointMake(_endPoint2.x + deltaX, _startPoint.y + (_endPoint2.x + deltaX-_startPoint.x)*tan(_angle));
+        [self setNeedsDisplay];
+    }
+    
+    if ([self distanceStartPoint:_endPoint3 endPoint:previousLocation] <= 20) {
+        if (location.y >= _startPoint.y - 50 || location.x >= maxX) {
+            return;
+        }
+        double deltaX = location.x - previousLocation.x;
+        _endPoint3 = CGPointMake(_endPoint3.x + deltaX, _startPoint.y - (_endPoint3.x + deltaX-_startPoint.x)*tan(_angle));
         [self setNeedsDisplay];
     }
 }
-
--(double)distanceStartPoint:(CGPoint)p1 endPoint:(CGPoint)p2{
-    NSLog(@"%f",hypotf(p1.x - p2.x, p1.y - p2.y));
-    NSLog(@"%f,%f",p1.x, p1.y);
-    NSLog(@"%f,%f",p2.x, p2.y);
-    return hypotf(p1.x - p2.x, p1.y - p2.y);
-}
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-*/
- - (void)drawRect:(CGRect)rect {
-     [super drawRect:rect];
-     
-     CGContextRef context = UIGraphicsGetCurrentContext();
-     CGContextSetStrokeColorWithColor(context, _color.CGColor);
-     
-     // Draw them with a 2.0 stroke width so they are a bit more visible.
-     CGContextSetLineWidth(context, 2.0f);
-     
-     CGContextMoveToPoint(context, _startPoint.x, _startPoint.y); //start at this point
-     
-     CGContextAddLineToPoint(context, _endPoint.x, _endPoint.y); //draw to this point
-     
-     // and now draw the Path!
-     CGContextStrokePath(context);
-}
-
 
 @end

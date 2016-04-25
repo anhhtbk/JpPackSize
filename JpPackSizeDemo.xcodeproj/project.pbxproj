@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2D87771CCDB50C009347C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D87761CCDB50C009347C5 /* main.m */; };
+		3E2D877A1CCDB51D009347C5 /* CustomLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D87791CCDB51D009347C5 /* CustomLine.m */; };
 		3EF8B86A1CCA28F50025F6CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8B8691CCA28F50025F6CD /* Assets.xcassets */; };
 		3EF8B8751CCA293E0025F6CD /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF8B8741CCA293E0025F6CD /* opencv2.framework */; };
 		3EF8B87D1CCA29850025F6CD /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B8771CCA29850025F6CD /* CaptureViewController.mm */; };
-		3EF8B87E1CCA29850025F6CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B8781CCA29850025F6CD /* main.m */; };
 		3EF8B87F1CCA29850025F6CD /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B87A1CCA29850025F6CD /* PhotoViewController.m */; };
 		3EF8B8801CCA29850025F6CD /* StartViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B87C1CCA29850025F6CD /* StartViewController.mm */; };
 		3EF8B8841CCA29E90025F6CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B8831CCA29E90025F6CD /* AppDelegate.m */; };
 		3EF8B8871CCA2A310025F6CD /* Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8B8861CCA2A310025F6CD /* Box.png */; };
-		3EF8B88E1CCA2D9F0025F6CD /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B88C1CCA2D9F0025F6CD /* Test.m */; };
-		3EF8B88F1CCA2D9F0025F6CD /* Test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8B88D1CCA2D9F0025F6CD /* Test.xib */; };
 		3EF8B8911CCA37180025F6CD /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8B8901CCA37180025F6CD /* camera.png */; };
 		3EF8B8931CCA42770025F6CD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF8B8921CCA42770025F6CD /* CoreVideo.framework */; };
 		3EF8B8951CCA42970025F6CD /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF8B8941CCA42970025F6CD /* Accelerate.framework */; };
@@ -30,24 +29,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E2D87761CCDB50C009347C5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3E2D87781CCDB51D009347C5 /* CustomLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLine.h; sourceTree = "<group>"; };
+		3E2D87791CCDB51D009347C5 /* CustomLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLine.m; sourceTree = "<group>"; };
 		3EF8B85A1CCA28F50025F6CD /* JpPackSizeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JpPackSizeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EF8B85E1CCA28F50025F6CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3EF8B8601CCA28F50025F6CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3EF8B8691CCA28F50025F6CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EF8B86E1CCA28F50025F6CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EF8B8741CCA293E0025F6CD /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		3EF8B8761CCA29850025F6CD /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
 		3EF8B8771CCA29850025F6CD /* CaptureViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CaptureViewController.mm; sourceTree = "<group>"; };
-		3EF8B8781CCA29850025F6CD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3EF8B8791CCA29850025F6CD /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		3EF8B87A1CCA29850025F6CD /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		3EF8B87B1CCA29850025F6CD /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		3EF8B87C1CCA29850025F6CD /* StartViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartViewController.mm; sourceTree = "<group>"; };
 		3EF8B8831CCA29E90025F6CD /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3EF8B8861CCA2A310025F6CD /* Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Box.png; sourceTree = SOURCE_ROOT; };
-		3EF8B88B1CCA2D9F0025F6CD /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		3EF8B88C1CCA2D9F0025F6CD /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
-		3EF8B88D1CCA2D9F0025F6CD /* Test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test.xib; sourceTree = "<group>"; };
 		3EF8B8901CCA37180025F6CD /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = SOURCE_ROOT; };
 		3EF8B8921CCA42770025F6CD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		3EF8B8941CCA42970025F6CD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -81,6 +78,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E11D1FD1CCDD8D700C499D8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3E2D87781CCDB51D009347C5 /* CustomLine.h */,
+				3E2D87791CCDB51D009347C5 /* CustomLine.m */,
+				3E11D2001CCDD91800C499D8 /* StartViewController */,
+				3E11D1FE1CCDD90400C499D8 /* CaptureViewController */,
+				3E11D1FF1CCDD90F00C499D8 /* PhotoViewController */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		3E11D1FE1CCDD90400C499D8 /* CaptureViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3EF8B8761CCA29850025F6CD /* CaptureViewController.h */,
+				3EF8B8771CCA29850025F6CD /* CaptureViewController.mm */,
+			);
+			name = CaptureViewController;
+			sourceTree = "<group>";
+		};
+		3E11D1FF1CCDD90F00C499D8 /* PhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3EF8B8791CCA29850025F6CD /* PhotoViewController.h */,
+				3EF8B87A1CCA29850025F6CD /* PhotoViewController.m */,
+			);
+			name = PhotoViewController;
+			sourceTree = "<group>";
+		};
+		3E11D2001CCDD91800C499D8 /* StartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3EF8B87B1CCA29850025F6CD /* StartViewController.h */,
+				3EF8B87C1CCA29850025F6CD /* StartViewController.mm */,
+			);
+			name = StartViewController;
+			sourceTree = "<group>";
+		};
 		3EF8B8511CCA28F50025F6CD = {
 			isa = PBXGroup;
 			children = (
@@ -102,21 +138,13 @@
 			isa = PBXGroup;
 			children = (
 				3EF8B8851CCA2A240025F6CD /* Images */,
+				3E11D1FD1CCDD8D700C499D8 /* ViewController */,
 				3EF8B8601CCA28F50025F6CD /* AppDelegate.h */,
 				3EF8B8831CCA29E90025F6CD /* AppDelegate.m */,
-				3EF8B8761CCA29850025F6CD /* CaptureViewController.h */,
-				3EF8B8771CCA29850025F6CD /* CaptureViewController.mm */,
-				3EF8B8781CCA29850025F6CD /* main.m */,
-				3EF8B8791CCA29850025F6CD /* PhotoViewController.h */,
-				3EF8B87A1CCA29850025F6CD /* PhotoViewController.m */,
-				3EF8B87B1CCA29850025F6CD /* StartViewController.h */,
-				3EF8B87C1CCA29850025F6CD /* StartViewController.mm */,
+				3E2D87761CCDB50C009347C5 /* main.m */,
 				3EF8B8691CCA28F50025F6CD /* Assets.xcassets */,
 				3EF8B86E1CCA28F50025F6CD /* Info.plist */,
 				3EF8B85D1CCA28F50025F6CD /* Supporting Files */,
-				3EF8B88B1CCA2D9F0025F6CD /* Test.h */,
-				3EF8B88C1CCA2D9F0025F6CD /* Test.m */,
-				3EF8B88D1CCA2D9F0025F6CD /* Test.xib */,
 			);
 			path = JpPackSizeDemo;
 			sourceTree = "<group>";
@@ -124,7 +152,6 @@
 		3EF8B85D1CCA28F50025F6CD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3EF8B85E1CCA28F50025F6CD /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -213,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF8B86A1CCA28F50025F6CD /* Assets.xcassets in Resources */,
-				3EF8B88F1CCA2D9F0025F6CD /* Test.xib in Resources */,
 				3EF8B8911CCA37180025F6CD /* camera.png in Resources */,
 				3EF8B8871CCA2A310025F6CD /* Box.png in Resources */,
 			);
@@ -226,12 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2D877A1CCDB51D009347C5 /* CustomLine.m in Sources */,
 				3EF8B87D1CCA29850025F6CD /* CaptureViewController.mm in Sources */,
 				3EF8B8801CCA29850025F6CD /* StartViewController.mm in Sources */,
 				3EF8B87F1CCA29850025F6CD /* PhotoViewController.m in Sources */,
-				3EF8B88E1CCA2D9F0025F6CD /* Test.m in Sources */,
+				3E2D87771CCDB50C009347C5 /* main.m in Sources */,
 				3EF8B8841CCA29E90025F6CD /* AppDelegate.m in Sources */,
-				3EF8B87E1CCA29850025F6CD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +399,7 @@
 				3EF8B8731CCA28F50025F6CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
