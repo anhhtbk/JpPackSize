@@ -37,6 +37,22 @@
     _color2 = [UIColor greenColor];
     _color3 = [UIColor blueColor];
     
+
+    
+    _lbDistance1 = [[UILabel alloc] initWithFrame:CGRectMake(_startPoint.x + 10, (_startPoint.y+_endPoint1.y)/2, 100, 20)];
+    _lbDistance1.textColor = _color1;
+    [self addSubview:_lbDistance1];
+    
+    _lbDistance2 = [[UILabel alloc] initWithFrame:CGRectMake((_startPoint.x+_endPoint2.x)/2-20, (_startPoint.y+_endPoint2.y)/2-30, 100, 20)];
+    _lbDistance2.textColor = _color2;
+    [self addSubview:_lbDistance2];
+    
+    _lbDistance3 = [[UILabel alloc] initWithFrame:CGRectMake((_startPoint.x+_endPoint3.x)/2, (_startPoint.y+_endPoint3.y)/2, 100, 20)];
+    _lbDistance3.textColor = _color3;
+    [self addSubview:_lbDistance3];
+    
+    [self updateDistance];
+    
     _width = 5;
     return self;
 }
@@ -44,7 +60,7 @@
 -(double)distanceStartPoint:(CGPoint)p1 endPoint:(CGPoint)p2{
     double dx = p1.x - p2.x;
     double dy = p1.y - p2.y;
-    return dx*dx + dy*dy;
+    return sqrt(dx*dx + dy*dy);
 }
 
 -(void)setEndPoint1:(CGPoint)p1 endPoint2:(CGPoint)p2 endPoint3:(CGPoint)p3{
@@ -83,6 +99,28 @@
     CGContextAddLineToPoint(context3, _endPoint3.x, _endPoint3.y); //draw to this point
     // and now draw the Path!
     CGContextStrokePath(context3);
+    
+    [self updateDistance];
+}
+
+-(void)updateDistance{
+    
+    _dist1 = [self distanceStartPoint:_startPoint endPoint:_endPoint1];
+    _dist2 = [self distanceStartPoint:_startPoint endPoint:_endPoint2];
+    _dist3 = [self distanceStartPoint:_startPoint endPoint:_endPoint3];
+    
+    //send data to PhotoView
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sumDistance" object:nil userInfo:@{@"sumDistance":[NSString stringWithFormat:@"%.0f",_dist1+_dist2+_dist3]}];
+    
+    // add distance
+    [_lbDistance1 setFrame:CGRectMake(_startPoint.x + 10, (_startPoint.y+_endPoint1.y)/2, 100, 20)];
+    _lbDistance1.text = [NSString stringWithFormat:@"%.0f pixels", _dist1];
+    
+    [_lbDistance2 setFrame:CGRectMake((_startPoint.x+_endPoint2.x)/2-20, (_startPoint.y+_endPoint2.y)/2-30, 100, 20)];
+    _lbDistance2.text = [NSString stringWithFormat:@"%.0f pixels", _dist2];
+    
+    [_lbDistance3 setFrame:CGRectMake((_startPoint.x+_endPoint3.x)/2, (_startPoint.y+_endPoint3.y)/2, 100, 20)];
+    _lbDistance3.text = [NSString stringWithFormat:@"%.0f pixels", _dist3];
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -91,7 +129,7 @@
     CGPoint location = [aTouch locationInView:self];
     CGPoint previousLocation = [aTouch previousLocationInView:self];
     
-    if ([self distanceStartPoint:_endPoint1 endPoint:previousLocation] <= 400) {
+    if ([self distanceStartPoint:_endPoint1 endPoint:previousLocation] <= 20) {
         if (location.y <= _startPoint.y + 30 || location.y >= maxY) {
             return;
         }
@@ -99,8 +137,8 @@
         [self setNeedsDisplay];
     }
     
-    if ([self distanceStartPoint:_endPoint2 endPoint:previousLocation] <= 400) {
-//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint2] <= 400 || location.x <= minX) {
+    if ([self distanceStartPoint:_endPoint2 endPoint:previousLocation] <= 20) {
+//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint2] <= 20 || location.x <= minX) {
 //            return;
 //        }
         double deltaX = location.x - previousLocation.x;
@@ -108,8 +146,8 @@
         [self setNeedsDisplay];
     }
     
-    if ([self distanceStartPoint:_endPoint3 endPoint:previousLocation] <= 400) {
-//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint3] <= 400 || location.x >= maxX) {
+    if ([self distanceStartPoint:_endPoint3 endPoint:previousLocation] <= 20) {
+//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint3] <= 20 || location.x >= maxX) {
 //            return;
 //        }
         double deltaX = location.x - previousLocation.x;

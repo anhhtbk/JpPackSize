@@ -38,24 +38,32 @@
     _saveButton.titleLabel.font = [UIFont systemFontOfSize:30];
     [self.view addSubview:_saveButton];
     
-    _sum = [NSNumber numberWithInteger:100];
+    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
+    _sum = [NSNumber numberWithInteger:line.dist1+line.dist2+line.dist3];
+    [self.view addSubview:line];
+
+    _labelRight = [[UILabel alloc] initWithFrame:CGRectMake(0,0,_widthScreen,64)] ;
+    _labelRight.backgroundColor = [UIColor clearColor];
+    _labelRight.font = [UIFont boldSystemFontOfSize:40];
+    _labelRight.adjustsFontSizeToFitWidth = NO;
     
-    UILabel *labelRight = [[UILabel alloc] initWithFrame:CGRectMake(0,0,_widthScreen,64)] ;
-    labelRight.backgroundColor = [UIColor clearColor];
-    labelRight.font = [UIFont boldSystemFontOfSize:40];
-    labelRight.adjustsFontSizeToFitWidth = NO;
+    _labelRight.textAlignment = NSTextAlignmentRight;
     
-    labelRight.textAlignment = NSTextAlignmentRight;
-    
-    labelRight.textColor = [UIColor blackColor];
-    labelRight.text = [NSString stringWithFormat:@"%@ cm", _sum];
-    labelRight.highlightedTextColor = [UIColor blackColor];
+    _labelRight.textColor = [UIColor blackColor];
+    _labelRight.text = [NSString stringWithFormat:@"%@ cm", _sum];
+    _labelRight.highlightedTextColor = [UIColor blackColor];
     
     // set the view as navigationba title view
-    self.navigationItem.titleView = labelRight;
+    self.navigationItem.titleView = _labelRight;
     
-    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
-    [self.view addSubview:line];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setSumDistance:)
+                                                 name:@"sumDistance" object:nil];
+}
+
+-(void)setSumDistance:(NSNotification *)noti{
+    _sum = [noti.userInfo valueForKey:@"sumDistance"];
+    _labelRight.text = [NSString stringWithFormat:@"%@ cm", _sum];
 }
 
 -(void)saveButtonClick{
