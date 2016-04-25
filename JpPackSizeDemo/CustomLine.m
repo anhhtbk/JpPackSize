@@ -29,8 +29,8 @@
     _startPoint = startPoint;
     
     _endPoint1 = CGPointMake(_startPoint.x, _startPoint.y + 100);
-    _endPoint2 = CGPointMake(_startPoint.x - 100, _startPoint.y - 100*tan(angle));
-    _endPoint3 = CGPointMake(_startPoint.x + 100, _startPoint.y - 100*tan(angle));
+    _endPoint2 = CGPointMake(_startPoint.x - 100, _startPoint.y - 100*tan(_angle));
+    _endPoint3 = CGPointMake(_startPoint.x + 100, _startPoint.y - 100*tan(_angle));
     
     self.backgroundColor = [UIColor clearColor];
     _color1 = [UIColor redColor];
@@ -42,7 +42,16 @@
 }
 
 -(double)distanceStartPoint:(CGPoint)p1 endPoint:(CGPoint)p2{
-    return hypotf(p1.x - p2.x, p1.y - p2.y);
+    double dx = p1.x - p2.x;
+    double dy = p1.y - p2.y;
+    return dx*dx + dy*dy;
+}
+
+-(void)setEndPoint1:(CGPoint)p1 endPoint2:(CGPoint)p2 endPoint3:(CGPoint)p3{
+    _endPoint1 = p1;
+    _endPoint2 = p2;
+    _endPoint3 = p3;
+    [self setNeedsDisplay];
 }
 
 -(void)drawRect:(CGRect)rect {
@@ -81,7 +90,8 @@
     UITouch *aTouch = [touches anyObject];
     CGPoint location = [aTouch locationInView:self];
     CGPoint previousLocation = [aTouch previousLocationInView:self];
-    if ([self distanceStartPoint:_endPoint1 endPoint:previousLocation] <= 20) {
+    
+    if ([self distanceStartPoint:_endPoint1 endPoint:previousLocation] <= 400) {
         if (location.y <= _startPoint.y + 30 || location.y >= maxY) {
             return;
         }
@@ -89,19 +99,19 @@
         [self setNeedsDisplay];
     }
     
-    if ([self distanceStartPoint:_endPoint2 endPoint:previousLocation] <= 20) {
-        if (location.y >= _startPoint.y - 50 || location.x <= minX) {
-            return;
-        }
+    if ([self distanceStartPoint:_endPoint2 endPoint:previousLocation] <= 400) {
+//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint2] <= 400 || location.x <= minX) {
+//            return;
+//        }
         double deltaX = location.x - previousLocation.x;
         _endPoint2 = CGPointMake(_endPoint2.x + deltaX, _startPoint.y + (_endPoint2.x + deltaX-_startPoint.x)*tan(_angle));
         [self setNeedsDisplay];
     }
     
-    if ([self distanceStartPoint:_endPoint3 endPoint:previousLocation] <= 20) {
-        if (location.y >= _startPoint.y - 50 || location.x >= maxX) {
-            return;
-        }
+    if ([self distanceStartPoint:_endPoint3 endPoint:previousLocation] <= 400) {
+//        if ([self distanceStartPoint:_startPoint endPoint:_endPoint3] <= 400 || location.x >= maxX) {
+//            return;
+//        }
         double deltaX = location.x - previousLocation.x;
         _endPoint3 = CGPointMake(_endPoint3.x + deltaX, _startPoint.y - (_endPoint3.x + deltaX-_startPoint.x)*tan(_angle));
         [self setNeedsDisplay];

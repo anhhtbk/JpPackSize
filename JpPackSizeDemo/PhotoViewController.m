@@ -7,6 +7,7 @@
 //
 
 #import "PhotoViewController.h"
+#import "CustomLine.h"
 
 @interface PhotoViewController ()
 @property int widthScreen;
@@ -23,13 +24,13 @@
     _heightScreen = [[UIScreen mainScreen] bounds].size.height-64;
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _widthScreen, _heightScreen-50)];
-    [_imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_imageView setContentMode:UIViewContentModeScaleAspectFill];
     [_imageView setImage:_image];
+    _imageView.clipsToBounds = YES;
     [self.view addSubview:_imageView];
     
     _saveButton = [[UIButton alloc] initWithFrame:CGRectMake((_widthScreen-200)/2, _heightScreen-47, 200, 45)];
     
-    [_saveButton setContentMode:UIViewContentModeScaleAspectFit];
     [_saveButton addTarget:self action:@selector(saveButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_saveButton setTitle:@"Save Photo" forState:UIControlStateNormal];
     [_saveButton setBackgroundColor:[UIColor colorWithRed:100/255. green:150/255. blue:200/255. alpha:1.]];
@@ -52,6 +53,9 @@
     
     // set the view as navigationba title view
     self.navigationItem.titleView = labelRight;
+    
+    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
+    [self.view addSubview:line];
 }
 
 -(void)saveButtonClick{

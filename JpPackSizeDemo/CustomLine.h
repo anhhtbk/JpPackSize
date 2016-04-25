@@ -21,5 +21,6 @@
 @property UIColor *color3;
 
 -(id)initWithStartPoint:(CGPoint)startPoint withAngle:(float)angle;
+-(void)setEndPoint1:(CGPoint)p1 endPoint2:(CGPoint)p2 endPoint3:(CGPoint)p3;
 
 @end

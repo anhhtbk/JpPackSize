@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E2D87771CCDB50C009347C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D87761CCDB50C009347C5 /* main.m */; };
 		3E2D877A1CCDB51D009347C5 /* CustomLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D87791CCDB51D009347C5 /* CustomLine.m */; };
+		3EC730131CCE1600003C157C /* UIBezierPath+dqd_arrowhead in Resources */ = {isa = PBXBuildFile; fileRef = 3EC730121CCE1600003C157C /* UIBezierPath+dqd_arrowhead */; };
+		3EC730191CCE1717003C157C /* LineArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC730181CCE1717003C157C /* LineArrow.m */; };
 		3EF8B86A1CCA28F50025F6CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8B8691CCA28F50025F6CD /* Assets.xcassets */; };
 		3EF8B8751CCA293E0025F6CD /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF8B8741CCA293E0025F6CD /* opencv2.framework */; };
 		3EF8B87D1CCA29850025F6CD /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3EF8B8771CCA29850025F6CD /* CaptureViewController.mm */; };
@@ -32,6 +34,9 @@
 		3E2D87761CCDB50C009347C5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3E2D87781CCDB51D009347C5 /* CustomLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLine.h; sourceTree = "<group>"; };
 		3E2D87791CCDB51D009347C5 /* CustomLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLine.m; sourceTree = "<group>"; };
+		3EC730121CCE1600003C157C /* UIBezierPath+dqd_arrowhead */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "UIBezierPath+dqd_arrowhead"; sourceTree = "<group>"; };
+		3EC730171CCE1717003C157C /* LineArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineArrow.h; sourceTree = "<group>"; };
+		3EC730181CCE1717003C157C /* LineArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineArrow.m; sourceTree = "<group>"; };
 		3EF8B85A1CCA28F50025F6CD /* JpPackSizeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JpPackSizeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF8B8601CCA28F50025F6CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3EF8B8691CCA28F50025F6CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,8 +86,7 @@
 		3E11D1FD1CCDD8D700C499D8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3E2D87781CCDB51D009347C5 /* CustomLine.h */,
-				3E2D87791CCDB51D009347C5 /* CustomLine.m */,
+				3EC730111CCE157A003C157C /* CustomView */,
 				3E11D2001CCDD91800C499D8 /* StartViewController */,
 				3E11D1FE1CCDD90400C499D8 /* CaptureViewController */,
 				3E11D1FF1CCDD90F00C499D8 /* PhotoViewController */,
@@ -115,6 +119,18 @@
 				3EF8B87C1CCA29850025F6CD /* StartViewController.mm */,
 			);
 			name = StartViewController;
+			sourceTree = "<group>";
+		};
+		3EC730111CCE157A003C157C /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				3EC730121CCE1600003C157C /* UIBezierPath+dqd_arrowhead */,
+				3E2D87781CCDB51D009347C5 /* CustomLine.h */,
+				3E2D87791CCDB51D009347C5 /* CustomLine.m */,
+				3EC730171CCE1717003C157C /* LineArrow.h */,
+				3EC730181CCE1717003C157C /* LineArrow.m */,
+			);
+			name = CustomView;
 			sourceTree = "<group>";
 		};
 		3EF8B8511CCA28F50025F6CD = {
@@ -241,6 +257,7 @@
 			files = (
 				3EF8B86A1CCA28F50025F6CD /* Assets.xcassets in Resources */,
 				3EF8B8911CCA37180025F6CD /* camera.png in Resources */,
+				3EC730131CCE1600003C157C /* UIBezierPath+dqd_arrowhead in Resources */,
 				3EF8B8871CCA2A310025F6CD /* Box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E2D877A1CCDB51D009347C5 /* CustomLine.m in Sources */,
+				3EC730191CCE1717003C157C /* LineArrow.m in Sources */,
 				3EF8B87D1CCA29850025F6CD /* CaptureViewController.mm in Sources */,
 				3EF8B8801CCA29850025F6CD /* StartViewController.mm in Sources */,
 				3EF8B87F1CCA29850025F6CD /* PhotoViewController.m in Sources */,

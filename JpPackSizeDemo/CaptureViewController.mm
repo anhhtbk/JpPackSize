@@ -12,6 +12,7 @@
 #import <opencv2/highgui/cap_ios.h>
 #import "CustomLine.h"
 
+
 using namespace cv;
 
 @interface CaptureViewController () <CvPhotoCameraDelegate>
@@ -42,9 +43,6 @@ using namespace cv;
     _camera.defaultAVCaptureSessionPreset = AVCaptureSessionPresetPhoto;
     _camera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     
-    NSLog(@"%d,%d", _camera.imageWidth, _camera.imageHeight);
-    
-    
     _captureButton = [[UIButton alloc] initWithFrame:CGRectMake((_widthScreen-50)/2, _heightScreen-50, 50, 50)];
     [_captureButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
     [_captureButton setContentMode:UIViewContentModeScaleAspectFit];
@@ -56,7 +54,9 @@ using namespace cv;
     _isCaptured = NO;
     
     CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
+    
     [self.view addSubview:line];
+    
 }
 
 -(void)captureButtonClick{
@@ -73,6 +73,7 @@ using namespace cv;
                                     {
                                         PhotoViewController *photoView = [PhotoViewController new];
                                         photoView.image = _imageView.image;
+                                        
                                         [self.navigationController pushViewController:photoView animated:YES];
                                     }];
         UIAlertAction* noButton = [UIAlertAction actionWithTitle:@"No, capture again."
