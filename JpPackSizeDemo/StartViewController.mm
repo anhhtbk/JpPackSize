@@ -28,7 +28,7 @@
     [_imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_imageView];
     
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, _widthScreen, _widthScreen-20, 2*(_heightScreen-_widthScreen-40)/3)];
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, _widthScreen, _widthScreen-20, 2*(_heightScreen-_widthScreen-20)/3)];
     _textView.text = @"Take a photo of box!";
     _textView.selectable = NO;
     _textView.editable = NO;
@@ -40,7 +40,7 @@
     
     [self.view addSubview:_textView];
     
-    _button = [[UIButton alloc] initWithFrame:CGRectMake(10, _widthScreen+2*(_heightScreen-_widthScreen-40)/3+10, _widthScreen-20, (_heightScreen-_widthScreen-40)/3)];
+    _button = [[UIButton alloc] initWithFrame:CGRectMake(10, _widthScreen+2*(_heightScreen-_widthScreen-20)/3+10, _widthScreen-20, (_heightScreen-_widthScreen-20)/3)];
     [_button setTitle:@"Capture Photo" forState:UIControlStateNormal];
     [_button setBackgroundColor:[UIColor colorWithRed:100/255. green:150/255. blue:200/255. alpha:1.]];
     [_button.layer setCornerRadius:5];

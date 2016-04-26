@@ -53,7 +53,7 @@ using namespace cv;
     
     _isCaptured = NO;
     
-    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:120];
+    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:125];
     
     [self.view addSubview:line];
     
