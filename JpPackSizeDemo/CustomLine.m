@@ -41,14 +41,17 @@
     
     _lbDistance1 = [[UILabel alloc] initWithFrame:CGRectMake(_startPoint.x + 10, (_startPoint.y+_endPoint1.y)/2, 100, 20)];
     _lbDistance1.textColor = _color1;
+    _lbDistance1.font = [UIFont systemFontOfSize:14];
     [self addSubview:_lbDistance1];
     
     _lbDistance2 = [[UILabel alloc] initWithFrame:CGRectMake((_startPoint.x+_endPoint2.x)/2-20, (_startPoint.y+_endPoint2.y)/2-30, 100, 20)];
     _lbDistance2.textColor = _color2;
+    _lbDistance2.font = [UIFont systemFontOfSize:14];
     [self addSubview:_lbDistance2];
     
     _lbDistance3 = [[UILabel alloc] initWithFrame:CGRectMake((_startPoint.x+_endPoint3.x)/2, (_startPoint.y+_endPoint3.y)/2, 100, 20)];
     _lbDistance3.textColor = _color3;
+    _lbDistance3.font = [UIFont systemFontOfSize:14];
     [self addSubview:_lbDistance3];
     
     [self updateDistance];
