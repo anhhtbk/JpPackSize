@@ -14,6 +14,12 @@
 @property CGPoint endPoint1;
 @property CGPoint endPoint2;
 @property CGPoint endPoint3;
+@property CGPoint endPoint4;
+
+@property CGPoint cardPoint1;
+@property CGPoint cardPoint2;
+@property CGPoint cardPoint3;
+
 @property float angle;
 @property float width;
 @property UIColor *color1;

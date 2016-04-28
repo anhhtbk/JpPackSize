@@ -38,7 +38,7 @@
     _saveButton.titleLabel.font = [UIFont systemFontOfSize:30];
     [self.view addSubview:_saveButton];
     
-    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, _heightScreen/2) withAngle:125];
+    CustomLine *line = [[CustomLine alloc] initWithStartPoint:CGPointMake(_widthScreen/2, 2*_heightScreen/3) withAngle:125];
     _sum = [NSNumber numberWithInteger:line.dist1+line.dist2+line.dist3];
     [self.view addSubview:line];
 
@@ -68,6 +68,7 @@
 
 -(void)saveButtonClick{
     //TODO
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveClick" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
